@@ -1,0 +1,16 @@
+/* Site Owner */
+    TODO
+
+/* Inspiration */
+    https://evenbettermotherfucking.website
+    jan Lentan at https://devurandom.xyz
+
+/* Tools */
+    neovim (lazyvim)
+    pandoc
+    htmlmin
+    markdown-toc
+    docker (for testing)
+
+/* Thanks To */
+    gregdan3 (jan Kekan San)
