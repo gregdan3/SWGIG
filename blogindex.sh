@@ -1,46 +1,44 @@
 #!/bin/bash
 BLOGDIR=pages/blog
 
-POSTS=$(find ${BLOGDIR}/*.md)
+POSTS=$(find "$BLOGDIR"/*.md)
+
 
 RETURNDATE=""
 
-# date is read from the 3rd %ed line
 function getdate {
-	FILEDATE=$(grep "^%" "$1" | sed '3q;d' | cut -d ' ' -f 2-)
-	RETURNDATE=$(date -u --date="$FILEDATE" "+%s")
+    FILEDATE=$(grep "^date: " "$1" | cut -d ' ' -f 2 | cut -d 'T' -f 1)
+    RETURNDATE=$(date -u --date="$FILEDATE" "+%s")
 }
 
 echo -n >blogdates.txt
-for f in $POSTS; do
-	getdate "$f"
-	printf "%d\t%s\n" "$RETURNDATE" "$f" >>blogdates.txt
+for f in ${POSTS[@]}; do
+    getdate "$f"
+    printf "%d\t%s\n" "$RETURNDATE" "$f" >>blogdates.txt
 done
 
-# sort by times
 POSTS=$(sort -nr <blogdates.txt | cut -f 2-)
 
 cat templates/blog_header.md
+echo ""
 
-for f in $POSTS; do
-	getdate "$f"
-	MTIME=$RETURNDATE
+for f in ${POSTS[@]}; do
+    getdate "$f"
+    MTIME=$RETURNDATE
+    TITLE=$(grep "^title: " "$f" | cut -d ' ' -f 2-)
 
-	TITLE=$(head -n 1 "$f")
-	TITLE=${TITLE#"% "}
+    OUTPAGE=${f%.md}.html
+    OUTPAGE=${OUTPAGE#"${BLOGDIR}/"}
 
-	OUTPAGE=${f%.md}.html
-	OUTPAGE=${OUTPAGE#"${BLOGDIR}/"}
+    echo -e "::: blogentry\n"
+    echo -e "[[$TITLE]($OUTPAGE)]{.bloglink} ($(date -d "@$MTIME" "+%Y-%m-%d"))"
 
-	echo -e "::: blogentry\n"
-	echo -e "[[$TITLE]($OUTPAGE)]{.bloglink} ($(date -d "@$MTIME" "+%Y-%m-%d"))\n"
-
-	PREAMBLE=$(sed '/^<!-- cut -->$/Q' "$f")
-	if [[ $(echo "$PREAMBLE" | wc -l) -lt 8 ]]; then
-		CLEANED=$(echo "$PREAMBLE" | sed 's/%.*//g ; /^$/d')
-		echo -e "\n[$CLEANED]{.blogdetails}\n"
-	fi
-	echo -e "\n:::\n"
+    PREAMBLE=$(sed '/^<!-- preamble -->$/Q' "$f" | grep -v '^$')
+    if [[ $(echo "$PREAMBLE" | wc -l) -lt 8 ]]; then
+        CLEANED=$(echo "$PREAMBLE" | tail -n1)
+        echo -e "\n[$CLEANED]{.blogpreamble}"
+    fi
+    echo -e "\n:::\n"
 done
 
 rm blogdates.txt
