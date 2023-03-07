@@ -1,3 +1,5 @@
+/* TODO: This is my own CSS. You may want to do some thing else! */
+
 /* @media (prefers-color-scheme: light) { */
 :root {
   --prim-fg: #444444;
@@ -156,7 +158,6 @@ details summary > * {
   display: inline; /*fix block elems*/
 }
 details p {
-  /* TODO: why the FUCK is this needed?? */
   margin: 0.1em;
   margin-left: 1em;
 }
@@ -211,7 +212,7 @@ details p {
   padding-inline: 1em;
   font-weight: bold;
 }
-.blogdetails {
+.blogpreamble {
   margin: 1.5em;
   padding: 0.3em;
   padding-inline: 0.5em;
