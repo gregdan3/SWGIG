@@ -1,7 +1,7 @@
 ---
-title: Lorem Ipsum
+title: Sim doc
 author: null
-date: 2022-07-12T00:00:00.000Z
+date: null
 ---
 ## Lorem Ipsum
 
