@@ -24,14 +24,14 @@ all: $(BUILDDIR)/blog/index.html $(BUILDDIR)/mindmap/index.html $(PAGES_BUILT) $
 clean:
 	rm -rf $(BUILDDIR)/*
 
-$(BUILDDIR)/mindmap/index.html:
+$(BUILDDIR)/mindmap/index.html: mapindex.sh
 	@mkdir -p $(@D)
 	./mapindex.sh | $(MD_TO_HTML) \
 	--template=$(TEMPLATE) \
 	-o $@
 	$(MINIFIER) $@ $@
 
-$(BUILDDIR)/blog/index.html:
+$(BUILDDIR)/blog/index.html: blogindex.sh
 	@mkdir -p $(@D)
 	./blogindex.sh | $(MD_TO_HTML) \
 	--template=$(TEMPLATE) \
