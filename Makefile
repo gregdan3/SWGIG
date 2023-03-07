@@ -14,18 +14,17 @@ LUA_FILTER=rm-colgroup.lua
 MD_TO_HTML=pandoc --lua-filter=$(LUA_FILTER) --from=markdown+yaml_metadata_block
 MINIFIER=htmlmin --remove-comments --remove-all-empty-space
 TOC_MAKER=npx markdown-toc --maxdepth 5 --no-stripHeadingTags --indent="  " --bullets="-" -i
-MAPPER=npx markmap --no-open
 
 DEVNAME=website
 
 .PHONY: all clean dev stopdev
 
-all: $(BUILDDIR)/blog/index.html $(BUILDDIR)/mind-map/index.html $(PAGES_BUILT) $(STATICS_BUILT)
+all: $(BUILDDIR)/blog/index.html $(BUILDDIR)/mindmap/index.html $(PAGES_BUILT) $(STATICS_BUILT)
 
 clean:
 	rm -rf $(BUILDDIR)/*
 
-$(BUILDDIR)/mind-map/index.html:
+$(BUILDDIR)/mindmap/index.html:
 	@mkdir -p $(@D)
 	./mapindex.sh | $(MD_TO_HTML) \
 	--template=$(TEMPLATE) \
