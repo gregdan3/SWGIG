@@ -1,4 +1,3 @@
-% blogzone
-% gregdan3
-% date unknown
-
+---
+title: TODO's Blog
+---
