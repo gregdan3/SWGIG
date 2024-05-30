@@ -12,8 +12,8 @@ STATICS_BUILT=$(patsubst static/%,$(BUILDDIR)/%,$(STATICS))
 LUA_FILTER=rm-colgroup.lua
 
 MD_TO_HTML=pandoc --lua-filter=$(LUA_FILTER) --from=markdown+yaml_metadata_block
-MINIFIER=htmlmin --remove-comments --remove-all-empty-space
 TOC_MAKER=npx markdown-toc --maxdepth 5 --no-stripHeadingTags --indent="  " --bullets="-" -i
+MINIFIER=npx html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true
 
 DEVNAME=website
 
@@ -29,14 +29,14 @@ $(BUILDDIR)/mindmap/index.html: mapindex.sh
 	./mapindex.sh | $(MD_TO_HTML) \
 	--template=$(TEMPLATE) \
 	-o $@
-	$(MINIFIER) $@ $@
+	$(MINIFIER) $@ -o $@
 
 $(BUILDDIR)/blog/index.html: blogindex.sh
 	@mkdir -p $(@D)
 	./blogindex.sh | $(MD_TO_HTML) \
 	--template=$(TEMPLATE) \
 	-o $@
-	$(MINIFIER) $@ $@
+	$(MINIFIER) $@ -o $@
 
 $(BUILDDIR)/%.html: $(PAGEDIR)/%.md $(TEMPLATE)
 	@mkdir -p $(@D)
@@ -45,7 +45,7 @@ $(BUILDDIR)/%.html: $(PAGEDIR)/%.md $(TEMPLATE)
 		--template=$(TEMPLATE) \
 		--metadata="directory:$(subst pages/,,$<)" \
 		-o $@ $<
-	$(MINIFIER) $@ $@
+	$(MINIFIER) $@ -o $@
 
 $(BUILDDIR)/%: $(STATICDIR)/%
 	@mkdir -p $(@D)
@@ -54,7 +54,12 @@ $(BUILDDIR)/%: $(STATICDIR)/%
 $(BUILDDIR)/%.css: $(STATICDIR)/%.css
 	@mkdir -p $(@D)
 	cp -r $< $@
-	$(MINIFIER) $@ $@
+	$(MINIFIER) $@ -o $@
+
+$(BUILDDIR)/%.js: $(STATICDIR)/%.js
+	@mkdir -p $(@D)
+	cp -r $< $@
+	$(MINIFIER) $@ -o $@
 
 dev: stopdev
 	docker rm $(DEVNAME) | true
