@@ -135,6 +135,9 @@ table {
   border: 2px solid var(--prim-ac);
   border-collapse: collapse;
 }
+thead {
+  border: 2px solid FG1;
+}
 td,
 th {
   border: 1px solid var(--prim-ac);
