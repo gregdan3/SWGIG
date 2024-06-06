@@ -37,7 +37,7 @@
 /*   } */
 /* } */
 html {
-  font-size: 1.125em;
+  font-size: 10px;
   font-family: 
     -apple-system, /* San Fransisco, Helvetica Neue, Lucida Grande on MacOS*/
     "Segoe UI", /* Windows */
@@ -57,22 +57,10 @@ body {
   padding: 4%;
   background: var(--prim-bg);
   color: var(--prim-fg);
-  line-height: 1.7em;
-  max-width: 69%;
+  max-width: 80%;
   box-shadow:
     0 5px 10px rgba(0, 0, 0, 0.2),
     0 15px 40px rgba(0, 0, 0, 0.05);
-}
-
-@media (pointer: none), (pointer: coarse) {
-  body {
-    line-height: 1.5em;
-    max-width: 80%;
-    font-size: 1.05em;
-  }
-  header h2 {
-    display: none;
-  }
 }
 
 /* Small reset style to avoid p messing with parent elems */
@@ -88,9 +76,10 @@ header {
   padding-block: 1em;
   justify-content: center;
 }
-header h2 {
+header > h2 {
   position: relative;
   left: 2%;
+  display: none;
 }
 header h3 {
   margin-left: auto;
@@ -105,7 +94,6 @@ header img {
 }
 nav {
   display: flex;
-  font-size: 1em;
   font-weight: bold;
   height: 1.6em;
   line-height: 2em;
@@ -114,9 +102,9 @@ nav {
 }
 article {
   padding-inline: 0.5em;
+  line-height: 1.5em;
 }
 footer {
-  font-size: 0.75em;
   line-height: 1em;
   padding-top: 0.25em;
   text-align: center;
@@ -242,4 +230,28 @@ details p {
   padding-inline: 0.5em;
   /* border-inline-start: 0.25em solid var(--prim-ac); */
   /* background: var(--sec-bg); */
+}
+
+@media (pointer: fine), (min-width: 800px) {
+  html {
+    font-size: 18px;
+  }
+  body {
+    max-width: 69%
+  }
+  article {
+    line-height: 1.7em;
+  }
+  header > h2 {
+    display: block;
+  }
+  nav > a {
+    font-size: 1em
+  }
+}
+
+@media (pointer: none), (pointer: coarse) {
+  html {
+    font-size: 18px;
+  }
 }
