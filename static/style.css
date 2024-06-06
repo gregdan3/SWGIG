@@ -251,7 +251,7 @@ details > p {
     font-size: 18px;
   }
   body {
-    max-width: 69%
+    max-width: 69%;
   }
   article {
     line-height: 1.7em;
@@ -260,7 +260,7 @@ details > p {
     display: block;
   }
   nav > a {
-    font-size: 1em
+    font-size: 1em;
   }
 }
 
