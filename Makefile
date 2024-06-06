@@ -62,13 +62,7 @@ $(BUILDDIR)/%.js: $(STATICDIR)/%.js
 	$(MINIFIER) $@ | sponge $@
 
 dev: stopdev
-	docker rm $(DEVNAME) | true
-	docker run \
-		-d \
-		-p 8080:80 \
-		-v $(PWD)/$(BUILDDIR):/usr/local/apache2/htdocs \
-		--name $(DEVNAME) \
-		httpd:2
+	screen -S $(DEVNAME) -d -m python3 -m http.server -d $(BUILDDIR)
 
 stopdev:
-	docker kill $(DEVNAME) | true
+	screen -S $(DEVNAME) -X quit | true
