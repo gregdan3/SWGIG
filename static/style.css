@@ -69,6 +69,15 @@ body {
     display: none;
   }
 }
+
+/* Small reset style to avoid p messing with parent elems */
+p {
+  margin: 0;
+}
+p + p {
+  margin-top: 10px;
+}
+
 header {
   display: flex;
   padding-block: 1em;
