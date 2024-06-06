@@ -36,11 +36,8 @@
 /*     --spoil-bg: #443231; */
 /*   } */
 /* } */
-body {
-  margin: 8% auto;
-  padding: 4%;
-  background: var(--prim-bg);
-  color: var(--prim-fg);
+html {
+  font-size: 1.125em;
   font-family: 
     -apple-system, /* San Fransisco, Helvetica Neue, Lucida Grande on MacOS*/
     "Segoe UI", /* Windows */
@@ -53,10 +50,18 @@ body {
     Helvetica, 
     Arial,
     sans-serif;
-  font-size: 1.125em;
+}
+
+body {
+  margin: 8% auto;
+  padding: 4%;
+  background: var(--prim-bg);
+  color: var(--prim-fg);
   line-height: 1.7em;
   max-width: 69%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 15px 40px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.2),
+    0 15px 40px rgba(0, 0, 0, 0.05);
 }
 
 @media (pointer: none), (pointer: coarse) {
