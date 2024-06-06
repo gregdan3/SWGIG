@@ -187,6 +187,13 @@ details summary > * {
 details > p {
   padding: var(--indent);
 }
+.details[open] {
+  padding-bottom: 0.25em;
+}
+.details[open] > .summary {
+  border-bottom: BLOCK_MARK solid SPOILFG;
+}
+
 .info,
 .warning,
 .error {
