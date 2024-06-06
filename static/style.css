@@ -181,8 +181,8 @@ summary {
   padding: 0.15em;
   cursor: pointer;
 }
-details summary > * {
-  display: inline; /*fix block elems*/
+summary > * {
+  display: inline-block; /*fix block elems*/
 }
 details > p {
   padding: var(--indent);
