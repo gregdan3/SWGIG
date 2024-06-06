@@ -16,6 +16,9 @@
   --error-fg: #8b0000;
   --spoil-fg: #443231;
   --spoil-bg: #e2c49c;
+
+  --block-mark: 4px;
+  --indent: 0.5em;
 }
 /* } */
 /* @media (prefers-color-scheme: dark) { */
@@ -117,10 +120,19 @@ a {
 a:hover {
   border-bottom: 0.06em dotted var(--prim-ac);
 }
+
+blockquote,
+.info,
+.warning,
+.error,
+.blogentry,
+div.sourceCode {
+  margin: var(--indent);
+  padding: var(--indent);
+}
+
 blockquote {
-  margin: 0.5em;
-  padding-inline: 0.5em;
-  border-inline-start: 0.25em solid var(--prim-ac);
+  border-inline-start: var(--block-mark) solid var(--prim-ac);
   background: var(--sec-bg);
 }
 code {
@@ -130,7 +142,7 @@ code {
   padding: 0.1em;
 }
 table {
-  margin: 0.5em;
+  margin: var(--indent);
   background: var(--sec-bg);
   border: 2px solid var(--prim-ac);
   border-collapse: collapse;
@@ -160,7 +172,7 @@ hr {
   color: transparent;
 }
 details {
-  margin: 0.5em;
+  margin: var(--indent);
   border-inline-start: 4px solid var(--spoil-fg);
   background: var(--spoil-bg);
   color: var(--spoil-fg);
@@ -172,9 +184,8 @@ summary {
 details summary > * {
   display: inline; /*fix block elems*/
 }
-details p {
-  margin: 0.1em;
-  margin-left: 1em;
+details > p {
+  padding: var(--indent);
 }
 .info,
 .warning,
@@ -205,12 +216,12 @@ details p {
   color: var(--info-fg);
 }
 .warning {
-  border-inline-start: 4px solid var(--warn-fg);
+  border-inline-start: var(--block-mark) solid var(--warn-fg);
   background: var(--warn-bg);
   color: var(--warn-fg);
 }
 .error {
-  border-inline-start: 4px solid var(--error-fg);
+  border-inline-start: var(--block-mark) solid var(--error-fg);
   background: var(--error-bg);
   color: var(--error-fg);
 }
@@ -218,7 +229,7 @@ details p {
 .blogentry {
   padding: 0em;
   margin: 0.5em;
-  border-inline-start: 0.25em solid var(--prim-ac);
+  border-inline-start: var(--block-mark) solid var(--prim-ac);
   background: var(--sec-bg);
   /* border-inline-start: 0.25em solid gold; */
   /* background: lightyellow; */
@@ -231,7 +242,7 @@ details p {
   margin: 1.5em;
   padding: 0.3em;
   padding-inline: 0.5em;
-  /* border-inline-start: 0.25em solid var(--prim-ac); */
+  /* border-inline-start: var(--block-mark) solid var(--prim-ac); */
   /* background: var(--sec-bg); */
 }
 
