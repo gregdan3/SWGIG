@@ -256,7 +256,7 @@ details > p {
   /* background: var(--sec-bg); */
 }
 
-@media (pointer: fine), (min-width: 800px) {
+@media (pointer: fine), (min-width: 900px) {
   html {
     font-size: 18px;
   }
