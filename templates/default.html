@@ -22,7 +22,11 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="TODO" />
     <!-- appears on tab and links -->
-    <meta property="og:description" content="TODO" />
+    $if(description)$
+    <meta property="og:description" content="$description$" />
+    $else$
+    <meta property="og:description" content="TODO: default description" />
+    $endif$
     <!-- appears on links -->
     <title>TODO - $pagetitle$</title>
     <link href="TODO" rel="canonical" />
