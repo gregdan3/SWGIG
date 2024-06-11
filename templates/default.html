@@ -13,7 +13,11 @@
     <!-- appears on links -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://TODO/$directory$" />
+    $if(image)$
+    <meta property="og:image" content="$image$" />
+    $else$
     <meta property="og:image" content="/avatar.jpg" />
+    $endif$
     <!-- appears on image previews of links-->
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="TODO" />
