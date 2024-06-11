@@ -146,10 +146,10 @@ code {
   font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   background: var(--sec-bg);
-  padding: 0.1em;
 }
 table {
-  margin: var(--indent);
+  margin-top: var(--indent);
+  margin-bottom: var(--indent);
   background: var(--sec-bg);
   border: 2px solid var(--prim-ac);
   border-collapse: collapse;
@@ -272,10 +272,19 @@ details > p {
   nav > a {
     font-size: 1em;
   }
+  table {
+    margin: var(--indent);
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 24px;
+  }
 }
 
 @media (pointer: none), (pointer: coarse) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
