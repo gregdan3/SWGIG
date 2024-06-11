@@ -197,9 +197,7 @@ details > p {
 .info,
 .warning,
 .error {
-  margin: 0.5em;
-  padding-inline-start: 0em;
-  padding: 0.35em;
+  min-height: 3em;
 }
 .info:before,
 .warning:before,
@@ -218,7 +216,7 @@ details > p {
   content: "⚑";
 }
 .info {
-  border-inline-start: 4px solid var(--info-fg);
+  border-inline-start: var(--block-mark) solid var(--info-fg);
   background: var(--info-bg);
   color: var(--info-fg);
 }
@@ -234,8 +232,6 @@ details > p {
 }
 
 .blogentry {
-  padding: 0em;
-  margin: 0.5em;
   border-inline-start: var(--block-mark) solid var(--prim-ac);
   background: var(--sec-bg);
   /* border-inline-start: 0.25em solid gold; */
