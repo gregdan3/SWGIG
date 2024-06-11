@@ -131,6 +131,13 @@ div.sourceCode {
   padding: var(--indent);
 }
 
+mark,
+code,
+sup,
+sub {
+  padding: 0.1em; /* breathing room */
+}
+
 blockquote {
   border-inline-start: var(--block-mark) solid var(--prim-ac);
   background: var(--sec-bg);
