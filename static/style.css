@@ -16,6 +16,8 @@
   --error-fg: #8b0000;
   --spoil-fg: #443231;
   --spoil-bg: #e2c49c;
+  --url: #3366cc;
+  --urlvisited: #7755bb;
 
   --block-mark: 4px;
   --indent: 0.5em;
@@ -98,27 +100,45 @@ header img {
 nav {
   display: flex;
   font-weight: bold;
-  height: 1.6em;
   line-height: 2em;
   margin-bottom: 1.6em;
   justify-content: space-evenly;
+}
+
+nav > a {
+  display: flex;
+  justify-content: space-evenly;
+  color: inherit;
+  border-style: outset;
+  border-color: var(--sec-bg);
+  border-radius: 0.5em;
+  text-decoration: none;
+  font-size: 0.8em;
+  padding: 0.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 12%;
 }
 article {
   padding-inline: 0.5em;
   line-height: 1.5em;
 }
 footer {
+  font-size: 0.75em;
   line-height: 1em;
-  padding-top: 0.25em;
   text-align: center;
+  margin-top: 1em;
 }
 a {
-  text-decoration: none;
-  border-bottom: 0.06em solid var(--prim-ac);
-  color: var(--prim-fg);
+  text-decoration: underline URL;
+  color: var(--url);
 }
 a:hover {
-  border-bottom: 0.06em dotted var(--prim-ac);
+  text-decoration: underline dotted;
+}
+a:visited {
+  text-decoration: underline var(--urlvisited);
+  color: var(--urlvisited);
 }
 
 blockquote,
@@ -142,11 +162,16 @@ blockquote {
   border-inline-start: var(--block-mark) solid var(--prim-ac);
   background: var(--sec-bg);
 }
-code {
+code,
+div.sourceCode {
   font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   background: var(--sec-bg);
 }
+div.sourceCode {
+  border-left: var(--block-mark) solid var(--sec-fg);
+}
+
 table {
   margin-top: var(--indent);
   margin-bottom: var(--indent);
@@ -168,24 +193,14 @@ hr {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-.spoiler {
-  margin: 0.5em;
-  padding: 0.05em;
-  border-inline-start: 4px solid var(--spoil-fg);
-  background: var(--spoil-bg);
-  color: var(--spoil-fg);
-}
-.spoiler:not(:hover) {
-  color: transparent;
-}
 details {
   margin: var(--indent);
-  border-inline-start: 4px solid var(--spoil-fg);
+  border-inline-start: var(--block-mark) solid var(--spoil-fg);
   background: var(--spoil-bg);
   color: var(--spoil-fg);
 }
 summary {
-  padding: 0.15em;
+  padding: var(--indent);
   cursor: pointer;
 }
 summary > * {
@@ -194,10 +209,10 @@ summary > * {
 details > p {
   padding: var(--indent);
 }
-.details[open] {
+details[open] {
   padding-bottom: 0.25em;
 }
-.details[open] > .summary {
+details[open] > summary {
   border-bottom: var(--block-mark) solid var(--spoil-fg);
 }
 
