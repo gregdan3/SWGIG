@@ -79,12 +79,13 @@ You can add `<span>` (inline) with a class with the following syntax:
 
 #### Extra Frontmatter
 
-Add extra CSS by providing the name of a css file in the `extracss` field of your file's frontmatter. That file must exist in `static`. For example:
+You can add extra css, an open graph image which will appear on the page in the header, and an open graph description with any of these frontmatter tags:
 
 ```yml
 ---
----
-extracss: artstyle
+extracss: /gallery/style.css
+image: /buttons/discord-pixelized.png
+description: "A gallery of fanart I've received."
 ---
 ```
 
@@ -92,14 +93,14 @@ You can add extra functionality to the frontmatter by checking for the variables
 
 #### Special strings
 
-Any file may have a table of contents by adding the line `<!-- toc -->`. On build, `markdown-toc` will replace that with a generated table of contents based on the file's headings.
+Any file may have a table of contents by adding the line `<!-- toc -->`. On build, `markdown-toc-redux` will replace that with a generated table of contents based on the file's headings.
 
 Blog posts with a line of text then `<!-- preamble -->` between the frontmatter and content, will have that line appear on the blog below the entry.
 
 #### Other notes
 
-- If you create a file, you must link to it with `.html`, NOT `.md`.
-  - Github Pages's router lets you omit the `.html`, but the dev server will not. You could add that with [these instructions](https://dyclassroom.com/reference-server/how-to-access-web-page-without-file-extension-apache-htaccess-url-rewrite) if you wanted, but I didn't want to have an extra `Dockerfile`.
+- You may link to other files with `.md`, thanks to the [lua filter](./pandoc/filters.lua).
+  - Github Pages's router lets you omit the `.html`, but the dev server will not.
 
 ## Deployment
 
@@ -109,11 +110,11 @@ See [the github workflow](./.github/main.yml). It'll happen automatically when y
 
 - [Make](https://www.gnu.org/software/make/) <!-- this is so foundational that it's hard to even bother mentioning it -->
 - [Pandoc](https://pandoc.org/), markdown to HTML
-- [markdown-toc](https://github.com/jonschlinkert/markdown-toc/), make tables of contents
-- [htmlmin](https://github.com/mankyd/htmlmin/), deliver tinier HTML
+- [markdown-toc-redux](https://github.com/gregdan3/markdown-toc-redux/), make tables of contents
+- [minify](https://www.npmjs.com/package/minify), to deliver tinier HTML
 - [bash](https://www.gnu.org/software/bash/) for a some scripts to generate certain pages
-- [docker](https://www.docker.com/) for dev
+- [python](https://www.python.org/) for dev
 
-## Other thoughts.
+## Other thoughts
 
 If you really want a static website generator you know all the ins and outs of, pick some tools off the shelf and build one. `make` is your friend. If you just want it to work, slap together [Sveltekit](https://kit.svelte.dev/) or [Astro](https://astro.build/) with [MDsveX](https://github.com/pngwn/MDsveX/) or [mdx](https://github.com/withastro/astro/tree/main/packages/integrations/mdx), respectively, and you're set.
