@@ -32,8 +32,6 @@ $(BUILDDIR)/blog/index.html: blogindex.sh
 		-o $@
 	$(MINIFIER) $@ | sponge $@
 
-# TODO: index for slides? very blog-adjacent, hm
-
 $(BUILDDIR)/slides/%.html: $(PAGEDIR)/slides/%.md
 	@mkdir -p $(@D)
 	$(MARP) $< -o $@
