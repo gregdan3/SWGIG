@@ -8,9 +8,9 @@
 /* Tools */
     neovim (lazyvim)
     pandoc
-    htmlmin
-    markdown-toc
-    docker (for testing)
+    minify
+    markdown-toc -> markdown-toc-redux
+    python (for testing)
 
 /* Thanks To */
     gregdan3 (jan Kekan San)

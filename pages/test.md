@@ -156,7 +156,7 @@ def somefunc(a: int) -> int:
 
 # Images
 
-TODO
+![avatar of the site!](/avatar.jpg)
 
 # Checklist
 
